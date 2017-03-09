@@ -10,9 +10,8 @@ import UIKit
 
 class GoalTableViewCell: UITableViewCell {
     //MARK: Properties
-    
+  
     @IBOutlet weak var eventName: UILabel!
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

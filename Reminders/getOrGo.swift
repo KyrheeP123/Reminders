@@ -40,6 +40,7 @@ class Event{
     
     func addEvent(){
         eventDict.updateValue(self, forKey: eventDict.count)
+        
     }
 }
 

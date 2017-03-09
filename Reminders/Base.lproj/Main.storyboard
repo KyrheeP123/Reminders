@@ -95,21 +95,21 @@
         <!--Events-->
         <scene sceneID="QNW-aV-bVa">
             <objects>
-                <tableViewController id="jJF-hT-KNy" sceneMemberID="viewController">
+                <tableViewController id="jJF-hT-KNy" customClass="GoalTableViewController" customModule="Reminders" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="aZf-aO-wEX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="GoalTableViewCell" rowHeight="90" id="Yaq-TH-M3V" customClass="GoalTableViewCell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="GoalTableViewCell" rowHeight="90" id="Yaq-TH-M3V" customClass="GoalTableViewCell" customModule="Reminders">
                                 <rect key="frame" x="0.0" y="28" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Yaq-TH-M3V" id="3v1-hG-Q6Q">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="89.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iR1-bc-iS2">
-                                            <rect key="frame" x="8" y="8" width="50" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="npM-Ke-rEF">
+                                            <rect key="frame" x="16" y="8" width="91" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -118,7 +118,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="eventName" destination="iR1-bc-iS2" id="rh3-AM-NJe"/>
+                                    <outlet property="eventName" destination="npM-Ke-rEF" id="kQW-m5-S1O"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -128,18 +128,18 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Events" id="RsW-WU-ETc">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="RKg-Gu-Ybd">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="RKg-Gu-Ybd">
                             <connections>
-                                <segue destination="C5w-Gh-HFK" kind="show" id="CMG-DX-oLf"/>
+                                <segue destination="UUq-hJ-Av1" kind="presentation" identifier="addEvent" id="CMG-DX-oLf"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1rH-Ip-fD9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6449" y="769"/>
+            <point key="canvasLocation" x="6436" y="817"/>
         </scene>
-        <!--Event View Controller-->
+        <!--New Event-->
         <scene sceneID="C5n-EB-gXV">
             <objects>
                 <viewController id="C5w-Gh-HFK" customClass="EventViewController" customModule="Reminders" customModuleProvider="target" sceneMemberID="viewController">
@@ -186,26 +186,28 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="inB-Im-6xx">
-                                <rect key="frame" x="164" y="247" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Create"/>
-                                <connections>
-                                    <action selector="createEvent:" destination="C5w-Gh-HFK" eventType="touchUpInside" id="GGG-P4-fP7"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="New Event" id="Q1P-YL-HNR">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="Snv-UY-b8J"/>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="uNu-iC-t5y">
+                            <connections>
+                                <segue destination="vbU-vh-tXz" kind="unwind" unwindAction="unwindToEventListWithSender:" id="wDt-HK-05Z"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="eventDeadline" destination="Edg-sm-z61" id="dhg-12-9Wb"/>
                         <outlet property="eventLocation" destination="pcb-Lv-YGG" id="68g-nA-ycF"/>
                         <outlet property="eventName" destination="gkj-ME-tkF" id="yDO-lZ-SUy"/>
+                        <outlet property="saveButton" destination="uNu-iC-t5y" id="g3f-J0-ucO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M3O-Qb-jJA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="vbU-vh-tXz" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="7298" y="38"/>
+            <point key="canvasLocation" x="8140" y="815.44227886056979"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="pVH-oh-c22">
@@ -271,7 +273,25 @@
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="5390" y="813"/>
+            <point key="canvasLocation" x="5614" y="818"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="A33-oV-7cs">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UUq-hJ-Av1" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="QAf-md-t5m">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="C5w-Gh-HFK" kind="relationship" relationship="rootViewController" id="WXl-JP-kAD"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D1x-zO-oV2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7200.8000000000002" y="815.44227886056979"/>
         </scene>
     </scenes>
 </document>

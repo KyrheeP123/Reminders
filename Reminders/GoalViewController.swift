@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GoalViewController: UIViewController, UITextFieldDelegate{
+class GoalViewController: UIViewController{
     //MARK: Properties
     @IBOutlet weak var goalName: UITextField!
     @IBOutlet weak var goalDeadline: UIDatePicker!
@@ -18,7 +18,6 @@ class GoalViewController: UIViewController, UITextFieldDelegate{
     //MARK: Base Functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.goalName.delegate = self
         // Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -27,12 +26,6 @@ class GoalViewController: UIViewController, UITextFieldDelegate{
         // Dispose of any resources that can be recreated.
     }
     
-    //MARK: Delegate Protocol
-    //Delegate Protocol defined from EventViewController
-//    func goalLoaded(controller: EventViewController, G: Goal) {
-//        goalToSend = G
-//        //controller.navigationController?.popViewController(animated: true)
-//    }
     
     //MARK: Implemented Actions
     @IBAction func createGoal(_ sender: UIButton) {
@@ -43,23 +36,9 @@ class GoalViewController: UIViewController, UITextFieldDelegate{
         
         }
     
-    //Before segue happens send the goal to the EventViewController
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        print("Here")
-//        //Segue from goal to event controller
-//        if segue.identifier == "Event"{
-//            let ExchangeViewData = segue.destination as! EventViewController
-//            ExchangeViewData.goalToRecieve = goalToSend!
-//            ExchangeViewData.delegate = self
-//            
-//        }
-//    }
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool{
         self.view.endEditing(true)
         return false
     }
-    
-       
     
 }

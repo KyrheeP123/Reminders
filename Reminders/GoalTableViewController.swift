@@ -9,26 +9,33 @@
 import UIKit
 import Foundation
 
-protocol GoalTableViewControllerDelegate{
-    func eventSent(controller: GoalTableViewController, E: Event)
-}
 
-class GoalTableViewController: UITableViewController, UITextFieldDelegate {
+class GoalTableViewController: UITableViewController{
     var events = [Event]()
-    var delegate: GoalTableViewControllerDelegate? = nil
     var eventToRecieve: Event?
+    var eventCount = 0
+    
+    //MARK: Action
+    @IBAction func unwindToEventList(sender: UIStoryboardSegue){
+        if let sourceViewController = sender.source as? EventViewController, let currEvent = sourceViewController.currEvent{
+            //Add a new event computes the location in the table where event where be located
+            let newIndexPath = IndexPath(row: events.count, section: 0)
+            currEvent.addEvent()
+            tableView.insertRows(at: [newIndexPath], with: .automatic)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        events.append(eventToRecieve!)
-        print(events)
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        //loadSampleEvents()
     }
+    
+    // Uncomment the following line to preserve selection between presentations
+    // self.clearsSelectionOnViewWillAppear = false
+
+    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -38,24 +45,30 @@ class GoalTableViewController: UITableViewController, UITextFieldDelegate {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+     
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        //return eventCount
+        return eventDict.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cellIdentifier = "GoalTableViewCell"
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? GoalTableViewCell else{
+            fatalError("The dequed call is not an instance of GoalTableViewCell")
+        }
 
-        // Configure the cell...
+        let currEvent = eventDict[indexPath.row]
+        
+        cell.eventName.text = currEvent?.eventName
 
         return cell
     }
-    */
+ 
 
     /*
     // Override to support conditional editing of the table view.
@@ -102,5 +115,9 @@ class GoalTableViewController: UITableViewController, UITextFieldDelegate {
     }
     */
     
+    private func loadSampleEvents(){
+        let event1 = Event(eventName: "Event1", time: Date(), location: "SC 333")
+        event1.addEvent()
+    }
 
 }

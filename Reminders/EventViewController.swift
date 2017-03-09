@@ -7,11 +7,9 @@
 //
 
 import UIKit
-
-// Delegate
-//protocol EventViewControllerDelegate {
-//    func goalLoaded(controller: EventViewController, G: Goal)
-//}
+//Unified logging system
+//Allows us to send messages to the consoles
+import os.log
 
 class EventViewController: UIViewController, UITextFieldDelegate{
     //Delegating object
@@ -19,8 +17,27 @@ class EventViewController: UIViewController, UITextFieldDelegate{
     @IBOutlet weak var eventName: UITextField!
     @IBOutlet weak var eventLocation: UITextField!
     @IBOutlet weak var eventDeadline: UIDatePicker!
-    var goalToRecieve: Goal?
-    var eventToSend: Event?
+    
+    var currEvent: Event? 
+    @IBOutlet weak var saveButton: UIBarButtonItem!
+    
+    //MARK: Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        ///=== is a identity operator, it checks that the button and saveButton are of the same type
+        guard let button = sender as? UIBarButtonItem, button === saveButton else{
+            os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
+            return
+        }
+        //Will return the value of the optional or the empyt string
+        var name = eventName.text ?? ""
+        var location = eventLocation.text ?? ""
+        var deadline = eventDeadline.date
+        
+        //Event to be sent back to the table
+        currEvent = Event(eventName: name, time: deadline, location: location)
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,29 +53,5 @@ class EventViewController: UIViewController, UITextFieldDelegate{
         return false
     }
     
-    
-    @IBAction func createEvent(_ sender: Any) {
-        //Protection for unwrapping an optional object
-//        guard let delegate = self.delegate else {
-//            print("Delegate Nil")
-//            return
-//        }
-//        delegate.goalLoaded(controller: self, G: goalToRecieve!)
-        
-        //Create an event
-        let event = Event(eventName: eventName.text!, time: eventDeadline.date, location: eventLocation.text!)
-        eventToSend = event
-        
-        //Add event to its goal
-        event.addEvent()
-        
-//        let ExchangeViewData2 = GoalTableViewController()
-//        ExchangeViewData2.eventToRecieve = eventToSend
-//        ExchangeViewData2.delegate = self
-    }
-    
-//    func eventSent(controller: GoalTableViewController, E: Event) {
-//        eventToSend = E
-//    }
     
 }
