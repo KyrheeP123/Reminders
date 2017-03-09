@@ -9,13 +9,13 @@
 import UIKit
 
 // Delegate
-protocol EventViewControllerDelegate {
-    func goalLoaded(controller: EventViewController, G: Goal)
-}
+//protocol EventViewControllerDelegate {
+//    func goalLoaded(controller: EventViewController, G: Goal)
+//}
 
-class EventViewController: UIViewController, UITextFieldDelegate, GoalTableViewControllerDelegate{
+class EventViewController: UIViewController, UITextFieldDelegate{
     //Delegating object
-    var delegate:EventViewControllerDelegate? = nil
+    //var delegate:EventViewControllerDelegate? = nil
     @IBOutlet weak var eventName: UITextField!
     @IBOutlet weak var eventLocation: UITextField!
     @IBOutlet weak var eventDeadline: UIDatePicker!
@@ -39,11 +39,11 @@ class EventViewController: UIViewController, UITextFieldDelegate, GoalTableViewC
     
     @IBAction func createEvent(_ sender: Any) {
         //Protection for unwrapping an optional object
-        guard let delegate = self.delegate else {
-            print("Delegate Nil")
-            return
-        }
-        delegate.goalLoaded(controller: self, G: goalToRecieve!)
+//        guard let delegate = self.delegate else {
+//            print("Delegate Nil")
+//            return
+//        }
+//        delegate.goalLoaded(controller: self, G: goalToRecieve!)
         
         //Create an event
         let event = Event(eventName: eventName.text!, time: eventDeadline.date, location: eventLocation.text!)
@@ -52,13 +52,13 @@ class EventViewController: UIViewController, UITextFieldDelegate, GoalTableViewC
         //Add event to its goal
         event.addEvent()
         
-        let ExchangeViewData2 = GoalTableViewController()
-        ExchangeViewData2.eventToRecieve = eventToSend
-        ExchangeViewData2.delegate = self
+//        let ExchangeViewData2 = GoalTableViewController()
+//        ExchangeViewData2.eventToRecieve = eventToSend
+//        ExchangeViewData2.delegate = self
     }
     
-    func eventSent(controller: GoalTableViewController, E: Event) {
-        eventToSend = E
-    }
+//    func eventSent(controller: GoalTableViewController, E: Event) {
+//        eventToSend = E
+//    }
     
 }
