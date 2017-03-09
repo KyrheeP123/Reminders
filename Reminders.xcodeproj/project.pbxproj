@@ -12,6 +12,11 @@
 		260696271E6B638D00147338 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 260696251E6B638D00147338 /* Main.storyboard */; };
 		260696291E6B638D00147338 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 260696281E6B638D00147338 /* Assets.xcassets */; };
 		2606962C1E6B638D00147338 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2606962A1E6B638D00147338 /* LaunchScreen.storyboard */; };
+		260696381E6B65FF00147338 /* getOrGo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260696371E6B65FF00147338 /* getOrGo.swift */; };
+		2606963C1E6BA17900147338 /* GoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2606963B1E6BA17900147338 /* GoalViewController.swift */; };
+		26C67E3A1E6F3C0E00DAF50D /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C67E391E6F3C0E00DAF50D /* EventViewController.swift */; };
+		26EF6F481E7056A000DE0F45 /* GoalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EF6F471E7056A000DE0F45 /* GoalTableViewCell.swift */; };
+		26EF6F4C1E70AE0800DE0F45 /* GoalTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EF6F4B1E70AE0800DE0F45 /* GoalTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +27,11 @@
 		260696281E6B638D00147338 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2606962B1E6B638D00147338 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2606962D1E6B638D00147338 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		260696371E6B65FF00147338 /* getOrGo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getOrGo.swift; sourceTree = "<group>"; };
+		2606963B1E6BA17900147338 /* GoalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalViewController.swift; sourceTree = "<group>"; };
+		26C67E391E6F3C0E00DAF50D /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
+		26EF6F471E7056A000DE0F45 /* GoalTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalTableViewCell.swift; sourceTree = "<group>"; };
+		26EF6F4B1E70AE0800DE0F45 /* GoalTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +64,51 @@
 		260696201E6B638D00147338 /* Reminders */ = {
 			isa = PBXGroup;
 			children = (
-				260696211E6B638D00147338 /* AppDelegate.swift */,
+				260696351E6B639D00147338 /* Model */,
+				260696341E6B639A00147338 /* View */,
+				260696331E6B639600147338 /* Controller */,
 				260696231E6B638D00147338 /* ViewController.swift */,
-				260696251E6B638D00147338 /* Main.storyboard */,
-				260696281E6B638D00147338 /* Assets.xcassets */,
-				2606962A1E6B638D00147338 /* LaunchScreen.storyboard */,
-				2606962D1E6B638D00147338 /* Info.plist */,
+				2606963B1E6BA17900147338 /* GoalViewController.swift */,
+				26C67E391E6F3C0E00DAF50D /* EventViewController.swift */,
+				260696361E6B63D100147338 /* Support Files */,
 			);
 			path = Reminders;
+			sourceTree = "<group>";
+		};
+		260696331E6B639600147338 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				26EF6F471E7056A000DE0F45 /* GoalTableViewCell.swift */,
+				26EF6F4B1E70AE0800DE0F45 /* GoalTableViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		260696341E6B639A00147338 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				260696251E6B638D00147338 /* Main.storyboard */,
+				2606962A1E6B638D00147338 /* LaunchScreen.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		260696351E6B639D00147338 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				260696281E6B638D00147338 /* Assets.xcassets */,
+				260696371E6B65FF00147338 /* getOrGo.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		260696361E6B63D100147338 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				260696211E6B638D00147338 /* AppDelegate.swift */,
+				2606962D1E6B638D00147338 /* Info.plist */,
+			);
+			name = "Support Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,7 +184,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				260696241E6B638D00147338 /* ViewController.swift in Sources */,
+				260696381E6B65FF00147338 /* getOrGo.swift in Sources */,
+				2606963C1E6BA17900147338 /* GoalViewController.swift in Sources */,
+				26C67E3A1E6F3C0E00DAF50D /* EventViewController.swift in Sources */,
+				26EF6F481E7056A000DE0F45 /* GoalTableViewCell.swift in Sources */,
 				260696221E6B638D00147338 /* AppDelegate.swift in Sources */,
+				26EF6F4C1E70AE0800DE0F45 /* GoalTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,6 +351,7 @@
 				260696321E6B638D00147338 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
