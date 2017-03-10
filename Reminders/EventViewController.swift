@@ -30,9 +30,9 @@ class EventViewController: UIViewController, UITextFieldDelegate{
             return
         }
         //Will return the value of the optional or the empyt string
-        var name = eventName.text ?? ""
-        var location = eventLocation.text ?? ""
-        var deadline = eventDeadline.date
+        let name = eventName.text ?? ""
+        let location = eventLocation.text ?? ""
+        let deadline = eventDeadline.date
         
         //Event to be sent back to the table
         currEvent = Event(eventName: name, time: deadline, location: location)
@@ -41,7 +41,7 @@ class EventViewController: UIViewController, UITextFieldDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //print(goalToRecieve!.goalName)
+    
     }
     
     override func didReceiveMemoryWarning() {

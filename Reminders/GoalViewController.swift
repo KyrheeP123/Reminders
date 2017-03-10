@@ -26,7 +26,6 @@ class GoalViewController: UIViewController{
         // Dispose of any resources that can be recreated.
     }
     
-    
     //MARK: Implemented Actions
     @IBAction func createGoal(_ sender: UIButton) {
         // Create Goal and prepare to send to next view
