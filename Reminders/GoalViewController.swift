@@ -33,7 +33,7 @@ class GoalViewController: UIViewController{
         goalToSend = newGoal
         print(newGoal.goalName)
         
-        }
+    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool{
         self.view.endEditing(true)

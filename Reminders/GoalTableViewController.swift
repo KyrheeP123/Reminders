@@ -19,7 +19,7 @@ class GoalTableViewController: UITableViewController{
     @IBAction func unwindToEventList(sender: UIStoryboardSegue){
         if let sourceViewController = sender.source as? EventViewController, let currEvent = sourceViewController.currEvent{
             //Add a new event computes the location in the table where event where be located
-            let newIndexPath = IndexPath(row: events.count, section: 0)
+            let newIndexPath = IndexPath(row: eventDict.count, section: 0)
             currEvent.addEvent()
             tableView.insertRows(at: [newIndexPath], with: .automatic)
         }
